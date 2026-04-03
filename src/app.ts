@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './config/swagger';
 // import router from './router/index';
 
 const app = express();
@@ -30,6 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req,res) => {
     res.send("Backend running...");
 })
+
+// API docs
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 export default app;
 
