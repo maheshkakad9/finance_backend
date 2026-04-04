@@ -23,6 +23,10 @@ export const validate =
       return;
     }
 
-    (req as any)[target] = result.data;
+    if (target === "query") {
+      Object.assign(req.query, result.data);
+    } else {
+      (req as any)[target] = result.data;
+    }
     next();
   };
