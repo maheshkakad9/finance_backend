@@ -1,18 +1,24 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-
-    "rootDir": "./src",
+    "module": "commonjs",
+    "lib": ["ES2020"],
     "outDir": "./dist",
-
-    "esModuleInterop": true,
+    "rootDir": "./src",
     "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-
-    "ignoreDeprecations": "6.0"
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
-  "include": ["src"]
+  "ts-node": {
+    "files": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }
