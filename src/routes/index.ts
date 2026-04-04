@@ -4,9 +4,11 @@ import userRoutes from './user.routes';
 
 const router = Router();
 
-
+// Auth routes
 router.use('/auth', authRoutes);
 
+// User routes
+router.use('/users', userRoutes);
 
 // Health Checks
 router.get('/health', (_req, res) => {
