@@ -4,7 +4,9 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
-// import router from './router/index';
+import { apiLimiter } from './middlewares/rateLimiter';
+import { errorHandler, notFoundHandler } from './middlewares/errorHandler';
+import router from './routes/index';
 
 const app = express();
 
@@ -29,12 +31,17 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req,res) => {
-    res.send("Backend running...");
-})
+app.use('/api', apiLimiter);
+
+app.use('/api', router);
 
 // API docs
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.use(notFoundHandler);
+
+app.use(errorHandler);
+
 
 export default app;
 
