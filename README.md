@@ -1,7 +1,7 @@
 # Finance Data Processing and Access Control Backend
 // Mahesh Kakad
 // maheshkakad06@gmail.com
-**Backend Developer Intern Assignment** — Node.js + TypeScript + PostgreSQL + Redis
+  Node.js + TypeScript + PostgreSQL + Redis
 
 ---
 
